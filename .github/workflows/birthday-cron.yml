@@ -3,23 +3,18 @@ name: Birthday Cron Job (Testing)
 on:
   schedule:
     - cron: "*/1 * * * *"   # every 1 minute
+  workflow_dispatch:
 
 jobs:
-  build:
-    name: Birthday checker
+  check-birthdays:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Run birthday script
         uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
         with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm install
+          node-version: '16.x'
 
       - name: Run birthday script
-        run: node index.js
+        run:   |
+         npm install
+         node index.js
