@@ -8,13 +8,23 @@ on:
 jobs:
   check-birthdays:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Run birthday script
+      - name: Checkout the code
         uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: "16"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright browsers & dependencies
+        run: |
+          npx playwright install-deps
+          npx playwright install
 
       - name: Run birthday script
-        run:   |
-         npx playwright install
-         node index.js
+        run: node index.js
