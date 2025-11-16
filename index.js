@@ -54,7 +54,7 @@ async function main() {
   const stagehand = new Stagehand({
     env: "LOCAL",
     localBrowserLaunchOptions: {
-      headless: false,
+      headless: true,
       userDataDir: "./user_data",
       viewport: { width: 1568, height: 768 },
     },
