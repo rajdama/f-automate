@@ -16,5 +16,4 @@ jobs:
 
       - name: Run birthday script
         run:   |
-         npm install
          node index.js
