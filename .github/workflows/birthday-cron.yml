@@ -1,0 +1,13 @@
+name: Birthday Cron Job (Testing)
+
+on:
+  schedule:
+    - cron: "*/1 * * * *"   # every 1 minute
+
+jobs:
+  check-birthdays:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run birthday script
+        run: node index.js
