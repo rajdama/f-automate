@@ -8,6 +8,20 @@ jobs:
   build:
     name: Birthday checker
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
+
+      # Setup Node.js
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"   # or 20, whichever you need
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run birthday script
       - name: Run birthday script
+        run: node your-script.js
