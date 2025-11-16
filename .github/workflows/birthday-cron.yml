@@ -10,21 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      # Automatically installs Playwright + dependencies
+      - name: Install Playwright Browsers
+        uses: microsoft/playwright-github-action@v1
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "16"
 
-      - name: Install dependencies
+      - name: Install NPM dependencies
         run: npm install
-
-      - name: Install Playwright browsers & dependencies
-        run: |
-          npx playwright install-deps
-          npx playwright install
 
       - name: Run birthday script
         run: node index.js
