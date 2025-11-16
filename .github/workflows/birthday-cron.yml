@@ -16,4 +16,5 @@ jobs:
 
       - name: Run birthday script
         run:   |
+         npx playwright install
          node index.js
